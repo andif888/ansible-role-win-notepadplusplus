@@ -1,0 +1,23 @@
+---
+# tasks file for ansible-role-win-notepadplusplus
+- name: Ensure extract dir exists
+  ansible.windows.win_file:
+    path: "{{ notepadplusplus_extract_dir }}"
+    state: directory
+
+- name: Download NotepadPlusPlus
+  ansible.windows.win_get_url:
+    url: '{{ notepadplusplus_download_url }}'
+    dest: '{{ notepadplusplus_extract_dir }}\{{ notepadplusplus_install_exe }}'
+    validate_certs: '{{ notepadplusplus_download_validate_certs }}'
+    force: no
+
+- name: Execute NotepadPlusPlus Setup
+  ansible.windows.win_command: '{{ notepadplusplus_extract_dir }}\{{ notepadplusplus_install_exe }} /S'
+  args:
+    creates: "{{ notepadplusplus_already_installed_path }}"
+  register: notepadplusplus_setup_result
+
+- name: Debug notepadplusplus_setup_result
+  ansible.builtin.debug:
+    var: notepadplusplus_setup_result

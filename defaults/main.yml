@@ -1,0 +1,16 @@
+---
+# defaults file for ansible-role-win-notepadplusplus
+# @var notepadplusplus_extract_dir:description: Extract directory.
+notepadplusplus_extract_dir: 'C:\windows\temp\notepadplusplus'
+
+# @var notepadplusplus_download_url:description: Download URL of the package.
+notepadplusplus_download_url: 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.7/npp.8.4.7.Installer.x64.exe'
+
+# @var notepadplusplus_download_validate_certs:description: Validate SSL certs when downloading.
+notepadplusplus_download_validate_certs: yes
+
+# @var notepadplusplus_install_exe:description: File name of the installation package.
+notepadplusplus_install_exe: 'npp.8.4.7.Installer.x64.exe'
+
+# @var notepadplusplus_already_installed_path:description: Path to check if already installed.
+notepadplusplus_already_installed_path: 'C:\Program Files\Notepad++\notepad++.exe'
